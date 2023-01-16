@@ -27,28 +27,28 @@ func (logger *CHLogger) Sync() error {
 }
 
 type SamplingConfig struct {
-	Tick       time.Duration `json:"tick"`
-	Initial    int           `json:"initial"`
-	Thereafter int           `json:"thereafter"`
+	Tick       time.Duration `json:"tick" yaml:"tick" mapstructure:"tick"`
+	Initial    int           `json:"initial" yaml:"initial" mapstructure:"initial"`
+	Thereafter int           `json:"thereafter" yaml:"thereafter" mapstructure:"thereafter"`
 }
 type Config struct {
-	Name              string                 `json:"name"`
-	Roll              bool                   `json:"roll"`           //product
-	RollConfig        RollConfig             `json:"rollConfig"`     //product
-	LogFiles          []string               `json:"logFiles"`       //product
-	InnerFiles        []string               `json:"innerFiles"`     //product
-	Sampler           bool                   `json:"sampler"`        //product
-	SamplingConfig    SamplingConfig         `json:"samplingConfig"` //product
-	InitialFields     map[string]interface{} `json:"initialFields"`
-	DisableCaller     bool                   `json:"disableCaller"`
-	DisableStacktrace bool                   `json:"disableStacktrace"`
+	Name              string                 `json:"name" yaml:"name" mapstructure:"name"`
+	Roll              bool                   `json:"roll" roll:"tick" mapstructure:"roll"`           //product
+	RollConfig        RollConfig             `json:"rollConfig" yaml:"rollConfig" mapstructure:"rollConfig"`     //product
+	LogFiles          []string               `json:"logFiles" yaml:"logFiles" mapstructure:"logFiles"`       //product
+	InnerFiles        []string               `json:"innerFiles" yaml:"innerFiles" mapstructure:"innerFiles"`     //product
+	Sampler           bool                   `json:"sampler" yaml:"sampler" mapstructure:"sampler"`        //product
+	SamplingConfig    SamplingConfig         `json:"samplingConfig" yaml:"samplingConfig" mapstructure:"samplingConfig"` //product
+	InitialFields     map[string]interface{} `json:"initialFields" yaml:"initialFields" mapstructure:"initialFields"`
+	DisableCaller     bool                   `json:"disableCaller" yaml:"disableCaller" mapstructure:"disableCaller"`
+	DisableStacktrace bool                   `json:"disableStacktrace" yaml:"disableStacktrace" mapstructure:"disableStacktrace"`
 }
 type RollConfig struct {
-	File       string `json:"file"`
-	MaxSize    int    `json:"maxSize"`
-	MaxBackups int    `json:"maxBackups"`
-	MaxAge     int    `json:"maxAge"`
-	Compress   bool   `json:"compress"`
+	File       string `json:"file" yaml:"file" mapstructure:"file"`
+	MaxSize    int    `json:"maxSize" yaml:"maxSize" mapstructure:"maxSize"`
+	MaxBackups int    `json:"maxBackups" yaml:"maxBackups" mapstructure:"maxBackups"`
+	MaxAge     int    `json:"maxAge" yaml:"maxAge" mapstructure:"maxAge"`
+	Compress   bool   `json:"compress" yaml:"compress" mapstructure:"compress"`
 }
 type lumberjackSync struct {
 	*lumberjack.Logger
