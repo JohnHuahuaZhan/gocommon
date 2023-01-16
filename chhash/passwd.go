@@ -1,4 +1,4 @@
-package supper_hash
+package chhash
 
 import (
 	"bytes"
